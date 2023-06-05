@@ -15,5 +15,8 @@
     "url": "https://github.com/1024pix/pix-audit-logger/issues"
   },
   "homepage": "https://github.com/1024pix/pix-audit-logger#readme",
-  "private": true
+  "private": true,
+  "engines": {
+    "node": "18"
+  }
 }
