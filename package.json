@@ -1,0 +1,19 @@
+{
+  "name": "pix-audit-logger",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1024pix/pix-audit-logger.git"
+  },
+  "author": "GIP PIX",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/1024pix/pix-audit-logger/issues"
+  },
+  "homepage": "https://github.com/1024pix/pix-audit-logger#readme",
+  "private": true
+}
