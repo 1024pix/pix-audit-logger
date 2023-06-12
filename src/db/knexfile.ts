@@ -1,7 +1,7 @@
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import { Knex } from 'knex';
 
-dotenv.config({ path: `${__dirname}/../.env` });
+dotenv.config();
 
 type BooleanType = 'true' | 'false';
 type KnexConfig = {
