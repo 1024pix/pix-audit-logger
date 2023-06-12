@@ -2,9 +2,9 @@ import Knex from 'knex';
 import pg from 'pg';
 import _ from 'lodash';
 
-import { logger } from '../lib/infrastructure/logger';
-import { config } from '../lib/config';
-import { knexConfigs } from './knexfile';
+import { logger } from '../lib/infrastructure/logger.ts';
+import { config } from '../lib/config.ts';
+import { knexConfigs } from './knexfile.ts';
 
 const types = pg.types;
 
@@ -38,21 +38,23 @@ try {
 /* -------------------- */
 
 async function disconnect(): Promise<void> {
-  return configuredKnex.destroy();
+  await configuredKnex.destroy();
 }
 
-async function emptyAllTables(): Promise<any> {
+async function emptyAllTables(): Promise<void> {
   const tableNames = await _listAllTableNames();
+
+  if (tableNames.length === 0) return;
+
   const tablesToDelete = _.without(
     tableNames,
     'knex_migrations',
     'knex_migrations_lock',
-    'view-active-organization-learners'
   );
   const tables = _.map(tablesToDelete, (tableToDelete) => `"${tableToDelete}"`).join();
   const query = dbSpecificQueries.emptyTableQuery;
 
-  return configuredKnex.raw(`${query}${tables}`);
+  await configuredKnex.raw(`${query}${tables}`);
 }
 
 export { configuredKnex as knex, disconnect, emptyAllTables };
