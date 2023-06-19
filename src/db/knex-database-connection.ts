@@ -4,7 +4,7 @@ import _ from 'lodash';
 
 import { logger } from '../lib/infrastructure/logger.ts';
 import { config } from '../lib/config.ts';
-import { knexConfigs } from './knexfile.ts';
+import knexConfigs from './knexfile.ts';
 
 const types = pg.types;
 

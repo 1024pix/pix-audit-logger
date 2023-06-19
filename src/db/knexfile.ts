@@ -33,7 +33,7 @@ const knexConfigs: KnexConfig = {
   },
 };
 
-export { knexConfigs };
+export default knexConfigs;
 
 function _localPostgresEnv(databaseUrl: string, knexAsyncStacktraceEnabled: BooleanType): Knex.Config {
   return {
