@@ -7,7 +7,8 @@
     "db:delete": "ts-node src/scripts/database/drop-database.ts",
     "db:empty": "ts-node src/scripts/database/empty-database.ts",
     "lint": "eslint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:new-migration": "NODE_OPTIONS='--loader ts-node/esm' npx knex --knexfile src/db/knexfile.ts migrate:make $migrationname"
   },
   "repository": {
     "type": "git",
