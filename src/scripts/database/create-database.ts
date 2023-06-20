@@ -1,12 +1,12 @@
 import * as dotenv from 'dotenv';
 
-dotenv.config();
-
 import { logger } from '../../lib/infrastructure/logger.ts';
 import { PGSQL_DUPLICATE_DATABASE_ERROR } from '../../lib/domain/errors.ts';
 import PgClient from '../../lib/infrastructure/pg-client.ts';
 
-(async () => {
+dotenv.config();
+
+async function main(): Promise<void> {
   const dbUrl = (process.env.NODE_ENV === 'test' ? process.env.TEST_DATABASE_URL : process.env.DATABASE_URL) as string;
   const url = new URL(dbUrl);
   const dbNameToCreate = url.pathname.slice(1);
@@ -27,7 +27,9 @@ import PgClient from '../../lib/infrastructure/pg-client.ts';
 
     process.exitCode = 1;
   } finally {
-    // @ts-ignore
+    // @ts-expect-error: an error can occur after the client is instantiated by calling the query_and_log method
     await client.end();
   }
-})();
+}
+
+await main();

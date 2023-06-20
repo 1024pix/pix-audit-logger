@@ -1,4 +1,4 @@
-import pino, { Logger, LoggerOptions } from 'pino';
+import pino, { type Logger, type LoggerOptions } from 'pino';
 import pretty from 'pino-pretty';
 
 import { config } from '../config.ts';
