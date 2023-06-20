@@ -1,7 +1,13 @@
+import url from 'url';
+import path from 'path';
 import * as dotenv from 'dotenv';
-import { Knex } from 'knex';
 
-dotenv.config();
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const envFilePath = path.join(__dirname, '..', '..', '.env');
+
+dotenv.config({ path: envFilePath });
+
+import { Knex } from 'knex';
 
 type BooleanType = 'true' | 'false';
 type KnexConfig = {
