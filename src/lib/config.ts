@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import { LevelWithSilent } from 'pino';
+import { type LevelWithSilent } from 'pino';
 
 dotenv.config();
 
