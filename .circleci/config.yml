@@ -17,14 +17,22 @@ jobs:
   checkout:
     docker:
       - image: cimg/node:18.16
+      - image: postgres:14.6-alpine
+        environment:
+          POSTGRES_USER: circleci
+          POSTGRES_HOST_AUTH_METHOD: trust
     resource_class: small
     working_directory: ~/pix-audit-logger
     steps:
       - checkout
       - run:
-          name: Lint
+          name: Lint and test
+          environment:
+            TEST_DATABASE_URL: postgres://circleci@localhost:5432/circleci
           command: |
             rm -rf .git/
             npm ci
             npm run lint
+            npm run test
+
 

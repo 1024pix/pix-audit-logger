@@ -16,7 +16,7 @@
     "local:trigger-lint-on-commit": "husky install",
     "local:prevent-trigger-lint-on-commit": "git config --unset core.hooksPath",
     "preinstall": "npx check-engine",
-    "test": "npm run lint"
+    "test": "NODE_ENV=test npm run db:prepare"
   },
   "repository": {
     "type": "git",
