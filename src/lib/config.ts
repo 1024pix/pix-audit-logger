@@ -10,8 +10,9 @@ type Configuration = {
   logging: {
     enabled: boolean;
     logLevel: LevelWithSilent;
-    logForHumans: boolean,
-  }
+    logForHumans: boolean;
+  };
+  port: number;
 };
 
 const config: Configuration = {
@@ -21,6 +22,7 @@ const config: Configuration = {
     logLevel: process.env.LOG_LEVEL as LevelWithSilent || 'info',
     logForHumans: _getLogForHumans(),
   },
+  port: parseInt(process.env.PORT as string, 10) || 3001,
 };
 
 switch (config.environment) {
