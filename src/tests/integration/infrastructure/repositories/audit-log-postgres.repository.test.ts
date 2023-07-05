@@ -1,7 +1,7 @@
-import {afterEach, describe, expect, test} from '@jest/globals';
-import {AuditLog} from '../../../../lib/domain/models/audit-log.ts';
-import {AuditLogPostgresRepository} from '../../../../lib/infrastructure/repositories/audit-log-postgres.repository.ts';
-import {knex} from '../../../../db/knex-database-connection.ts';
+import { afterEach, describe, expect, test } from '@jest/globals';
+import { AuditLog } from '../../../../lib/domain/models/audit-log.ts';
+import { auditLogPostgresRepository } from '../../../../lib/infrastructure/repositories/audit-log-postgres.repository.ts';
+import { knex } from '../../../../db/knex-database-connection.ts';
 
 describe('Integration | Infrastructure | Repositories | AuditLogPostgresRepository', () => {
 
@@ -12,7 +12,6 @@ describe('Integration | Infrastructure | Repositories | AuditLogPostgresReposito
   describe('create', () => {
     test('creates new audit log', async () => {
       // given
-      const auditLogPostgresRepository = new AuditLogPostgresRepository();
       const auditLog = new AuditLog({
         occurredAt: new Date ('2021-06-19T15:28:18.000Z'),
         action: 'ANONYMIZATION',
@@ -37,7 +36,7 @@ describe('Integration | Infrastructure | Repositories | AuditLogPostgresReposito
         role: 'SUPER_ADMIN',
         createdAt: result.createdAt
       });
-      expect(result).toEqual(expectedResult)
+      expect(result).toEqual(expectedResult);
     })
   })
 })
