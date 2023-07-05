@@ -1,11 +1,14 @@
 import { Server, type ServerOptions } from '@hapi/hapi';
 
-import { config } from './config';
+import { config } from './config.ts';
+import { ROUTES } from './routes.ts';
 
 const { port } = config;
 
 const createServer = async (): Promise<Server> => {
   const server: Server = createBareServer();
+
+  server.route(ROUTES);
 
   return server;
 };
