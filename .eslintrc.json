@@ -10,6 +10,8 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "comma-dangle": ["error", "only-multiline"],
+    "object-curly-spacing": ["error", "always"],
     "quotes": [
       "error",
       "single",
@@ -18,6 +20,7 @@
         "allowTemplateLiterals": true
       }
     ],
+    "semi": ["error", "always"],
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": [
       "error",

@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, test , beforeAll} from 'vitest';
+import { afterEach, describe, expect, test , beforeAll } from 'vitest';
 import { AuditLog } from '../../../../lib/domain/models/audit-log.ts';
 import { auditLogPostgresRepository } from '../../../../lib/infrastructure/repositories/audit-log-postgres.repository.ts';
 import { knex } from '../../../../db/knex-database-connection.ts';
@@ -7,11 +7,11 @@ describe('Integration | Infrastructure | Repositories | AuditLogPostgresReposito
 
   beforeAll(async() => {
     await knex('audit-log').truncate();
-  })
+  });
 
   afterEach(async() => {
     await knex('audit-log').truncate();
-  })
+  });
 
   describe('create', () => {
     test('creates new audit log', async () => {
@@ -38,9 +38,9 @@ describe('Integration | Infrastructure | Repositories | AuditLogPostgresReposito
         targetUserId: '2',
         client: 'PIX_ADMIN',
         role: 'SUPER_ADMIN',
-        createdAt: result.createdAt
+        createdAt: result.createdAt,
       });
       expect(result).toEqual(expectedResult);
-    })
-  })
-})
+    });
+  });
+});

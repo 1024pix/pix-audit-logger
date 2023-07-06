@@ -1,4 +1,4 @@
-import {type Request, type ResponseObject, type ResponseToolkit, type ServerRoute} from '@hapi/hapi';
+import { type Request, type ResponseObject, type ResponseToolkit, type ServerRoute } from '@hapi/hapi';
 import Joi from 'joi';
 
 import { type CreateAuditLogUseCase } from '../domain/usecases/create-audit-log.usecase.ts';
@@ -34,7 +34,7 @@ export const CREATE_AUDIT_LOG_ROUTE: ServerRoute = {
         occurredAt: Joi.string().isoDate().required(),
         role: Joi.string().valid(...AuditLogRoleTypes).required(),
         client: Joi.string().valid(...AuditLogClientTypes).required(),
-      })
-    }
-  }
+      }),
+    },
+  },
 };
