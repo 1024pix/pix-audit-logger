@@ -2,6 +2,8 @@ import { Server } from '@hapi/hapi';
 
 import { config } from './config.ts';
 import { ROUTES } from './routes.ts';
+import {disconnect} from '../db/knex-database-connection.ts';
+import {logger} from './infrastructure/logger.ts';
 
 const { port } = config;
 
@@ -38,8 +40,11 @@ export class HapiServer {
     await this._server.start()
   }
 
-  async stop(): Promise<void> {
-    await this._server.stop()
+  async stop(options?: {timeout: number} | undefined): Promise<void> {
+    logger.info('Stopping HAPI server...');
+    await this._server.stop(options)
+    logger.info('Closing connections to database...');
+    await disconnect()
+    logger.info('Exiting process...');
   }
-
 }
