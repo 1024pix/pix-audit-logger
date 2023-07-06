@@ -1,4 +1,4 @@
-import {afterEach, beforeEach, describe, expect, test} from '@jest/globals';
+import {afterEach, beforeEach, describe, expect, test} from 'vitest';
 import {HapiServer} from '../../../lib/server';
 import {type Server, type ServerInjectOptions,} from '@hapi/hapi';
 

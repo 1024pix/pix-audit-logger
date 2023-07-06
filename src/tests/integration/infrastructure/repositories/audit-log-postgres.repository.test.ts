@@ -1,9 +1,13 @@
-import { afterEach, describe, expect, test } from '@jest/globals';
+import { afterEach, describe, expect, test , beforeAll} from 'vitest';
 import { AuditLog } from '../../../../lib/domain/models/audit-log.ts';
 import { auditLogPostgresRepository } from '../../../../lib/infrastructure/repositories/audit-log-postgres.repository.ts';
 import { knex } from '../../../../db/knex-database-connection.ts';
 
 describe('Integration | Infrastructure | Repositories | AuditLogPostgresRepository', () => {
+
+  beforeAll(async() => {
+    await knex('audit-log').truncate();
+  })
 
   afterEach(async() => {
     await knex('audit-log').truncate();
