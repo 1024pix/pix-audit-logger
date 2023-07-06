@@ -30,7 +30,7 @@ jobs:
           command: npm run lint
       - run:
           name: Test
-          command: npm run test
+          command: npm run test:ci
           environment:
             TEST_DATABASE_URL: postgres://circleci@localhost:5432/circleci
 

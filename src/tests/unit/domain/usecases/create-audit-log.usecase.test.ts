@@ -1,4 +1,4 @@
-import { describe, expect, jest, test } from '@jest/globals';
+import { describe, expect, vi, test } from 'vitest';
 import { AuditLog } from '../../../../lib/domain/models/audit-log.ts';
 import { CreateAuditLogUseCase } from '../../../../lib/domain/usecases/create-audit-log.usecase.ts';
 import { type AuditLogRepository } from '../../../../lib/domain/interfaces/audit-log-repository.ts';
@@ -17,7 +17,7 @@ describe('Unit | UseCases | Create audit log', () => {
       });
 
       const auditLogRepository: AuditLogRepository = {
-        create: jest.fn<AuditLogRepository['create']>(async () =>  {})
+        create: vi.fn(async () =>  {})
       };
 
       const createAuditLog = new CreateAuditLogUseCase(auditLogRepository);
