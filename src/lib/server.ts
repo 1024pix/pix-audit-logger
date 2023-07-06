@@ -1,39 +1,45 @@
-import { Server, type ServerOptions } from '@hapi/hapi';
+import { Server } from '@hapi/hapi';
 
 import { config } from './config.ts';
 import { ROUTES } from './routes.ts';
 
 const { port } = config;
 
-const createServer = async (): Promise<Server> => {
-  const server: Server = createBareServer();
+export class HapiServer {
+  private readonly _server: Server
 
-  server.route(ROUTES);
-
-  return server;
-};
-
-const createBareServer = function (): Server {
-  const serverConfiguration: ServerOptions = {
-    compression: false,
-    debug: { request: false, log: false },
-    routes: {
-      cors: {
-        origin: ['*'],
-        additionalHeaders: ['X-Requested-With'],
+  constructor() {
+    this._server = new Server({
+      compression: false,
+      debug: { request: false, log: false },
+      routes: {
+        cors: {
+          origin: ['*'],
+          additionalHeaders: ['X-Requested-With'],
+        },
+        response: {
+          emptyStatusCode: 204,
+        },
       },
-      response: {
-        emptyStatusCode: 204,
+      port,
+      router: {
+        isCaseSensitive: false,
+        stripTrailingSlash: true,
       },
-    },
-    port,
-    router: {
-      isCaseSensitive: false,
-      stripTrailingSlash: true,
-    },
-  };
+    })
+   this._server.route(ROUTES);
+  }
 
-  return new Server(serverConfiguration);
-};
+  get server(): Server {
+    return this._server
+  }
 
-export { createServer };
+  async start(): Promise<void> {
+    await this._server.start()
+  }
+
+  async stop(): Promise<void> {
+    await this._server.stop()
+  }
+
+}

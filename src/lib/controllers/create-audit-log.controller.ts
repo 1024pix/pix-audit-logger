@@ -3,8 +3,8 @@ import Joi from 'joi';
 
 import { type CreateAuditLogUseCase } from '../domain/usecases/create-audit-log.usecase.ts';
 import { type AuditLog } from '../domain/models/audit-log.ts';
-import { createAuditLogUseCase } from '../domain/usecases';
-import { AuditLogActionTypes, AuditLogClientTypes, AuditLogRoleTypes } from '../domain/models/models.definition';
+import { createAuditLogUseCase } from '../domain/usecases/usecases.ts';
+import { AuditLogActionTypes, AuditLogClientTypes, AuditLogRoleTypes } from '../domain/models/models.definition.ts';
 
 export class CreateAuditLogController {
   constructor(private readonly createAuditLogUseCase: CreateAuditLogUseCase) {
