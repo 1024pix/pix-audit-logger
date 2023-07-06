@@ -1,13 +1,13 @@
 import {afterEach, beforeEach, describe, expect, test} from '@jest/globals';
-import {createServer} from '../../../lib/server';
+import {HapiServer} from '../../../lib/server';
 import {type Server, type ServerInjectOptions,} from '@hapi/hapi';
 
 describe('Acceptance | Controllers | CreateAuditLogController', () => {
-  let server: Server ;
+  let server: Server;
   let options: ServerInjectOptions;
 
   beforeEach(async function (): Promise<void> {
-    server = await createServer();
+    server = (new HapiServer()).server;
 
     options = {
       method: 'POST',
