@@ -1,6 +1,6 @@
-import {afterEach, beforeEach, describe, expect, test} from 'vitest';
-import {HapiServer} from '../../../lib/server';
-import {type Server, type ServerInjectOptions,} from '@hapi/hapi';
+import { afterEach, beforeEach, describe, expect, test } from 'vitest';
+import { HapiServer } from '../../../lib/server';
+import { type Server, type ServerInjectOptions } from '@hapi/hapi';
 
 describe('Acceptance | Controllers | CreateAuditLogController', () => {
   let server: Server;
@@ -19,13 +19,13 @@ describe('Acceptance | Controllers | CreateAuditLogController', () => {
         occurredAt: new Date('2023-07-05'),
         role: 'SUPPORT',
         client: 'PIX_ADMIN',
-      }
+      },
     };
   });
 
   afterEach(async function (): Promise<void> {
     await server.stop();
-  })
+  });
 
   describe('when request is valid', () => {
     test('returns a created http status', async () => {

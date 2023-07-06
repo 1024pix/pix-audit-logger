@@ -4,5 +4,5 @@ import { auditLogPostgresRepository } from '../../infrastructure/repositories/au
 const createAuditLogUseCase = new CreateAuditLogUseCase(auditLogPostgresRepository);
 
 export {
-  createAuditLogUseCase
+  createAuditLogUseCase,
 };

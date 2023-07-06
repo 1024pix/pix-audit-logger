@@ -2,13 +2,13 @@ import { Server } from '@hapi/hapi';
 
 import { config } from './config.ts';
 import { ROUTES } from './routes.ts';
-import {disconnect} from '../db/knex-database-connection.ts';
-import {logger} from './infrastructure/logger.ts';
+import { disconnect } from '../db/knex-database-connection.ts';
+import { logger } from './infrastructure/logger.ts';
 
 const { port } = config;
 
 export class HapiServer {
-  private readonly _server: Server
+  private readonly _server: Server;
 
   constructor() {
     this._server = new Server({
@@ -28,23 +28,23 @@ export class HapiServer {
         isCaseSensitive: false,
         stripTrailingSlash: true,
       },
-    })
+    });
    this._server.route(ROUTES);
   }
 
   get server(): Server {
-    return this._server
+    return this._server;
   }
 
   async start(): Promise<void> {
-    await this._server.start()
+    await this._server.start();
   }
 
   async stop(options?: {timeout: number} | undefined): Promise<void> {
     logger.info('Stopping HAPI server...');
-    await this._server.stop(options)
+    await this._server.stop(options);
     logger.info('Closing connections to database...');
-    await disconnect()
+    await disconnect();
     logger.info('Exiting process...');
   }
 }
