@@ -16,7 +16,7 @@ jobs:
   lint_and_test:
     docker:
       - image: cimg/node:18.17
-      - image: postgres:14.6-alpine
+      - image: postgres:14.8-alpine
         environment:
           POSTGRES_USER: circleci
           POSTGRES_HOST_AUTH_METHOD: trust
