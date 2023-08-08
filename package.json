@@ -37,6 +37,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "@tsconfig/node18": "^18.2.0",
     "@types/lodash": "^4.14.195",
     "@types/node": "^20.3.0",
     "@types/pg": "^8.10.2",
