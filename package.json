@@ -16,10 +16,12 @@
     "local:trigger-lint-on-commit": "husky install",
     "local:prevent-trigger-lint-on-commit": "git config --unset core.hooksPath",
     "preinstall": "npx check-engine",
-    "test": "NODE_ENV=test npm run db:prepare && vitest --watch",
+    "test": "NODE_ENV=test npm run db:prepare && vitest",
     "test:ci": "NODE_ENV=test npm run db:prepare && vitest",
     "test:coverage": "vitest --coverage.enabled",
-    "start": "nodemon src/lib/index.ts"
+    "test:watch": "NODE_ENV=test npm run db:prepare && vitest --watch",
+    "start": "ts-node src/lib/index.ts",
+    "start:watch": "nodemon src/lib/index.ts"
   },
   "repository": {
     "type": "git",

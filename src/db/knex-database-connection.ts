@@ -25,18 +25,6 @@ const dbSpecificQueries = {
   emptyTableQuery: 'TRUNCATE ',
 };
 
-/* QueryBuilder Extension */
-try {
-  Knex.QueryBuilder.extend('whereInArray', function (column, values) {
-    return this.where(column, configuredKnex.raw('any(?)', [values]));
-  });
-} catch (error) {
-  if ((error as Error).message !== "Can't extend QueryBuilder with existing method ('whereInArray').") {
-    logger.error(error);
-  }
-}
-/* -------------------- */
-
 async function disconnect(): Promise<void> {
   await configuredKnex.destroy();
 }
