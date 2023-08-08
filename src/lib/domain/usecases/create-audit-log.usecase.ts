@@ -1,5 +1,5 @@
-import { type AuditLogRepository } from '../interfaces/audit-log.repository';
-import { type AuditLog } from '../models/audit-log';
+import { type AuditLogRepository } from '../interfaces/audit-log.repository.js';
+import { type AuditLog } from '../models/audit-log.js';
 
 export class CreateAuditLogUseCase {
   constructor(private readonly auditLogRepository: AuditLogRepository) {}

@@ -1,9 +1,9 @@
 import { Server } from '@hapi/hapi';
 
-import { config } from './config.ts';
-import { ROUTES } from './routes.ts';
-import { disconnect } from '../db/knex-database-connection.ts';
-import { logger } from './infrastructure/logger.ts';
+import { config } from './config.js';
+import { ROUTES } from './routes.js';
+import { disconnect } from '../db/knex-database-connection.js';
+import { logger } from './infrastructure/logger.js';
 
 const { port } = config;
 

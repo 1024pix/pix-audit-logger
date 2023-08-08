@@ -1,10 +1,9 @@
-import Knex from 'knex';
+import knex from 'knex';
 import pg from 'pg';
 import _ from 'lodash';
 
-import { logger } from '../lib/infrastructure/logger.ts';
-import { config } from '../lib/config.ts';
-import knexConfigs from './knexfile.ts';
+import { config } from '../lib/config.js';
+import knexConfigs from './knexfile.js';
 
 const types = pg.types;
 
@@ -17,7 +16,8 @@ types.setTypeParser(types.builtins.DATE, (value) => value);
 
 const { environment } = config;
 const knexConfig = knexConfigs[environment];
-const configuredKnex = Knex(knexConfig);
+// @ts-expect-error library types definitions are not correct
+const configuredKnex = knex(knexConfig);
 const databaseName = configuredKnex.client.database();
 const dbSpecificQueries = {
   listTablesQuery:

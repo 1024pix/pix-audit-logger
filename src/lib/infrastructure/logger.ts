@@ -1,7 +1,7 @@
 import pino, { type Logger, type LoggerOptions } from 'pino';
 import pretty from 'pino-pretty';
 
-import { config } from '../config.ts';
+import { config } from '../config.js';
 
 const { logging } = config;
 
@@ -14,14 +14,17 @@ const loggerOptions: LoggerOptions = {
 
 if (logging.logForHumans) {
   const omitDay = 'HH:MM:ss';
+  // @ts-expect-error library types definitions are not correct
   const prettyPrint = pretty({
     sync: true,
     colorize: true,
     translateTime: omitDay,
     ignore: 'pid,hostname',
   });
+  // @ts-expect-error library types definitions are not correct
   logger = pino(loggerOptions, prettyPrint);
 } else {
+  // @ts-expect-error library types definitions are not correct
   logger = pino(loggerOptions);
 }
 
