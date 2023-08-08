@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, test } from 'vitest';
-import { HapiServer } from '../../../lib/server';
+import { HapiServer } from '../../../src/lib/server';
 import { type Server, type ServerInjectOptions } from '@hapi/hapi';
 
 describe('Acceptance | Controllers | CreateAuditLogController', () => {

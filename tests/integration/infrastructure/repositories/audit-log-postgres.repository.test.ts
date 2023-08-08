@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, test , beforeAll } from 'vitest';
-import { AuditLog } from '../../../../lib/domain/models/audit-log.ts';
-import { auditLogPostgresRepository } from '../../../../lib/infrastructure/repositories/audit-log-postgres.repository.ts';
-import { knex } from '../../../../db/knex-database-connection.ts';
+import { AuditLog } from '../../../../src/lib/domain/models/audit-log.js';
+import { auditLogPostgresRepository } from '../../../../src/lib/infrastructure/repositories/audit-log-postgres.repository.js';
+import { knex } from '../../../../src/db/knex-database-connection.js';
 
 describe('Integration | Infrastructure | Repositories | AuditLogPostgresRepository', () => {
 

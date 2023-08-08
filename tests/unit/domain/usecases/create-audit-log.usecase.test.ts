@@ -1,7 +1,7 @@
 import { describe, expect, vi, test } from 'vitest';
-import { AuditLog } from '../../../../lib/domain/models/audit-log.ts';
-import { CreateAuditLogUseCase } from '../../../../lib/domain/usecases/create-audit-log.usecase.ts';
-import { type AuditLogRepository } from '../../../../lib/domain/interfaces/audit-log-repository.ts';
+import { AuditLog } from '../../../../src/lib/domain/models/audit-log.js';
+import { CreateAuditLogUseCase } from '../../../../src/lib/domain/usecases/create-audit-log.usecase.js';
+import { type AuditLogRepository } from '../../../../src/lib/domain/interfaces/audit-log.repository.js';
 
 describe('Unit | UseCases | Create audit log', () => {
   describe('when an audit log is created', function () {
