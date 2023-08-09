@@ -1,19 +1,18 @@
 import { type Request, type ResponseObject, type ResponseToolkit, type ServerRoute } from '@hapi/hapi';
 import Joi from 'joi';
 
-import { type CreateAuditLogUseCase } from '../domain/usecases/create-audit-log.usecase.ts';
-import { type AuditLog } from '../domain/models/audit-log.ts';
-import { createAuditLogUseCase } from '../domain/usecases/usecases.ts';
-import { AuditLogActionTypes, AuditLogClientTypes, AuditLogRoleTypes } from '../domain/models/models.definition.ts';
+import { type CreateAuditLogUseCase } from '../domain/usecases/create-audit-log.usecase.js';
+import { type AuditLog } from '../domain/models/audit-log.js';
+import { createAuditLogUseCase } from '../domain/usecases/usecases.js';
+import { AuditLogActionTypes, AuditLogClientTypes, AuditLogRoleTypes } from '../domain/models/models.definition.js';
 
 export class CreateAuditLogController {
-  constructor(private readonly createAuditLogUseCase: CreateAuditLogUseCase) {
-  }
+  constructor(private readonly createAuditLogUseCase: CreateAuditLogUseCase) {}
 
   async handle(request: Request, h: ResponseToolkit): Promise<ResponseObject> {
-    const auditLog = request.payload as AuditLog;
+      const auditLog = request.payload as AuditLog;
 
-    await this.createAuditLogUseCase.execute(auditLog);
+      await this.createAuditLogUseCase.execute(auditLog);
 
     return h.response().code(204);
   }

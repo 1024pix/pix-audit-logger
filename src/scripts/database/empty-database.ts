@@ -1,5 +1,5 @@
-import { emptyAllTables, disconnect } from '../../db/knex-database-connection.ts';
-import { logger } from '../../lib/infrastructure/logger.ts';
+import { emptyAllTables, disconnect } from '../../db/knex-database-connection.js';
+import { logger } from '../../lib/infrastructure/logger.js';
 
 async function main(): Promise<void> {
   logger.info('Emptying all tables...');

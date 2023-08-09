@@ -1,4 +1,4 @@
-import { type AuditLogAction, type AuditLogClient, type AuditLogRole } from './models.definition';
+import { type AuditLogAction, type AuditLogClient, type AuditLogRole } from './models.definition.js';
 
 export class AuditLog {
   id?: string;

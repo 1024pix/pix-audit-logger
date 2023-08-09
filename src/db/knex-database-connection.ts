@@ -1,10 +1,9 @@
-import Knex from 'knex';
+import knex from 'knex';
 import pg from 'pg';
 import _ from 'lodash';
 
-import { logger } from '../lib/infrastructure/logger.ts';
-import { config } from '../lib/config.ts';
-import knexConfigs from './knexfile.ts';
+import { config } from '../lib/config.js';
+import knexConfigs from './knexfile.js';
 
 const types = pg.types;
 
@@ -17,25 +16,14 @@ types.setTypeParser(types.builtins.DATE, (value) => value);
 
 const { environment } = config;
 const knexConfig = knexConfigs[environment];
-const configuredKnex = Knex(knexConfig);
+// @ts-expect-error library types definitions are not correct
+const configuredKnex = knex(knexConfig);
 const databaseName = configuredKnex.client.database();
 const dbSpecificQueries = {
   listTablesQuery:
     'SELECT table_name FROM information_schema.tables WHERE table_schema = current_schema() AND table_catalog = ?',
   emptyTableQuery: 'TRUNCATE ',
 };
-
-/* QueryBuilder Extension */
-try {
-  Knex.QueryBuilder.extend('whereInArray', function (column, values) {
-    return this.where(column, configuredKnex.raw('any(?)', [values]));
-  });
-} catch (error) {
-  if ((error as Error).message !== "Can't extend QueryBuilder with existing method ('whereInArray').") {
-    logger.error(error);
-  }
-}
-/* -------------------- */
 
 async function disconnect(): Promise<void> {
   await configuredKnex.destroy();

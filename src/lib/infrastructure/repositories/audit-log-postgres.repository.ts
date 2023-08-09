@@ -1,6 +1,6 @@
-import { type AuditLog } from '../../domain/models/audit-log.ts';
-import { type AuditLogRepository } from '../../domain/interfaces/audit-log.repository.ts';
-import { knex } from '../../../db/knex-database-connection.ts';
+import { type AuditLog } from '../../domain/models/audit-log.js';
+import { type AuditLogRepository } from '../../domain/interfaces/audit-log.repository.js';
+import { knex } from '../../../db/knex-database-connection.js';
 
 export class AuditLogPostgresRepository implements AuditLogRepository {
   async create(auditLog: AuditLog): Promise<void> {
