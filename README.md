@@ -1,3 +1,6 @@
+# ⚠️ **Dépôt obsolète** 
+Le code de Pix Audit Logger se trouve désormais dans [le dépôt principal 1024pix/pix](https://github.com/1024pix/pix/tree/dev/audit-logger).
+
 # Pix Audit Logger
 
 ## Installation
